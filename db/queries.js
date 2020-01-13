@@ -9,6 +9,7 @@ module.exports = {
             return knex('posts').where('id', id)
         },
         create: function(post){
+            post.like = 0
             return knex('posts').insert(post).returning('*')
         }
     },
@@ -20,6 +21,7 @@ module.exports = {
             return knex('comments').where('id', id)
         },
         create: function(comment){
+            comment.like = 0
             return knex('comments').insert(comment).returning('*')
         }
     },
