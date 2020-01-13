@@ -4,7 +4,6 @@ exports.up = function(knex) {
       table.increments()
       table.string('image_url')
       table.integer('like')
-      table.integer('dislike')
       table.string('content')
       table.integer('user_id').references('id')
       .inTable('users').onDelete('CASCADE').index()
