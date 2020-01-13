@@ -29,4 +29,18 @@ router.post('/comments', (req, res) => {
         })
 })
 
+router.put('/comments/:id', (req, res) => {
+    queries
+        .comments
+        .update(req.params.id, req.body)
+        .then(data => res.json(data))
+})
+
+router.delete('/comments/:id', (req, res) => {
+    queries
+        .comments
+        .destroy(req.params.id)
+        .then(res.send(204))
+})
+
 module.exports = router
