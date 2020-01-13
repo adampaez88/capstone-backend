@@ -11,6 +11,12 @@ module.exports = {
         create: function(post){
             post.like = 0
             return knex('posts').insert(post).returning('*')
+        },
+        update: function(id, post){
+            return knex('posts').where('id', id).update(post).returning('*')
+        },
+        destroy: function(id){
+            return knex('posts').where('id', id).delete()
         }
     },
     comments: {
@@ -23,6 +29,12 @@ module.exports = {
         create: function(comment){
             comment.like = 0
             return knex('comments').insert(comment).returning('*')
+        },
+        update: function(id, comment){
+            return knex('comments').where('id', id).update(comment).returning('*')
+        },
+        destroy: function(id){
+            return knex('comments').where('id', id).delete()
         }
     },
     users: {

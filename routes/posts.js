@@ -29,4 +29,18 @@ router.post('/posts', (req, res) => {
         })
 })
 
+router.put('/posts/:id', (req, res) => {
+    queries
+        .posts
+        .update(req.params.id, req.body)
+        .then(data => res.json(data))
+})
+
+router.delete('/posts/:id', (req, res) => {
+    queries
+        .posts
+        .destroy(req.params.id)
+        .then(res.send(204))
+})
+
 module.exports = router
