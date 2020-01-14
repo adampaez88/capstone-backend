@@ -41,6 +41,6 @@ router.delete('/posts/:id', (req, res) => {
         .posts
         .destroy(req.params.id)
         .then(res.send(204))
-})
+}) 
 
 module.exports = router
