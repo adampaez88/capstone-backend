@@ -2,10 +2,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
+const bcrypt = require('bcrypt')
+
 
 const posts = require('./routes/posts')
 const comments = require('./routes/comments')
 const users = require('./routes/users')
+
+
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
