@@ -46,7 +46,7 @@ module.exports = {
             return knex('users').where('id', id)
         },
         create: (user) => {
-            return bcrypt.hash(user.password_digest, 12)
+            return bcrypt.hash(user.password, 12)
             .then(hash => {
                     return knex('users')
                         .insert({
@@ -59,8 +59,8 @@ module.exports = {
             })
         }, 
         destroy: function(id){
-                return knex('users').where('id', id).delete()
-            }
+             return knex('users').where('id', id).delete()
+        }
     },
     login: {
         authorizeUser: (user) => {
