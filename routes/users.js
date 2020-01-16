@@ -64,11 +64,10 @@ router.post('/login', (request, response) => {
             if(!user){
                 response.status(401).json({error:'No User Found'})
             } else {
-                return bcrypt
-                    .compare(request.body.password_digest, user.password_digest)
+                return bcrypt.compare(request.body.password, user.password_digest)
                     .then(isAuthenticated => {
                         if(!isAuthenticated){
-                            response.status(401).json({error:'Nice Try Dick'})
+                            response.status(401).json({error: 'Invalid'})
                         } else {
                             return jwt.sign(user, SECRET, (error, token) => {
                                 response.status(200).json({ token })
