@@ -5,6 +5,18 @@ module.exports = {
     posts: {
         getAll: function(){
            return knex('posts')
+           .then(posts => {
+            const promises = posts.map(post => {
+                return knex('users')
+                    .where({id: post.user_id})
+                    .first()
+                    .then(user => {
+                        post.user = user
+                        return post
+                    })
+            })
+            return Promise.all(promises)
+        })
         },
         getOne: function(id){
             return knex('posts').where('id', id)
@@ -23,6 +35,19 @@ module.exports = {
     comments: {
         getAll: function(){
             return knex('comments')
+            // the code below is how you set up a one to many relationship
+            .then(comments => {
+                const promises = comments.map(comment => {
+                    return knex('users')
+                        .where({id: comment.user_id})
+                        .first()
+                        .then(user => {
+                            comment.user = user
+                            return comment
+                        })
+                })
+                return Promise.all(promises)
+            })
         },
         getOne: function(id){
             return knex('comments').where('id', id)
