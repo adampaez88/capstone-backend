@@ -70,7 +70,10 @@ router.post('/login', (request, response) => {
                             response.status(401).json({error: 'Invalid'})
                         } else {
                             return jwt.sign(user, SECRET, (error, token) => {
-                                response.status(200).json({ token })
+                                response.status(200).json({ 
+                                    token: token,
+                                    user_id: user.id
+                                 })
                             })
                         } 
                     })

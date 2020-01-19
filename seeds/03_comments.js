@@ -5,7 +5,7 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('comments').insert([
-        {content: 'First Comment!', like: 0}
+        {content: 'First Comment!', like: 0, user_id: 1, post_id: 1}
       ]);
     });
 };
