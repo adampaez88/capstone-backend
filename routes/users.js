@@ -72,7 +72,8 @@ router.post('/login', (request, response) => {
                             return jwt.sign(user, SECRET, (error, token) => {
                                 response.status(200).json({ 
                                     token: token,
-                                    user_id: user.id
+                                    user_id: user.id,
+                                    username: user.username
                                  })
                             })
                         } 
