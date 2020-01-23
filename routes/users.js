@@ -23,15 +23,6 @@ router.get('/users/:id', (req, res) => {
         })
 })
 
-// router.post('/users', (req, res) => {
-//     queries
-//         .users
-//         .create(req.body)
-//         .then(results => {
-//             res.send(results[0])
-//         })
-// })
-
 router.post('/users', (request, response) => {
     queries
         .users
