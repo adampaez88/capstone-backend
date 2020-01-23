@@ -33,7 +33,7 @@ router.post('/users', (request, response) => {
             } else {
                 jwt.sign(user, SECRET, (error, token) => {
                     if(error) throw new Error(error)
-                    response.status(201).json({ token })
+                    response.status(201).json({ token, user })
                 })
             } 
         })
